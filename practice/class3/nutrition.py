@@ -53,5 +53,5 @@ fruit = {"apple": "130",
 
 item = (input("Item: ")).lower()
 
-if fruit.get(item):
+if item in fruit:
     print("Calories: ", fruit[item])
