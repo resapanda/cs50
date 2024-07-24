@@ -39,3 +39,7 @@ students2 = [
 
 for student in students2:
     print(student["name"], student["house"], student["patronus"], sep=",")
+
+# double bracket
+for i in range(len(students2)):
+    print(students2[i]['name'])
