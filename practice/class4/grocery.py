@@ -7,15 +7,16 @@ sorted alphabetically by item, prefixing each line with the number of times
 the user inputted that item. No need to pluralize the items.
 Treat the user’s input case-insensitively."""
 
-item = []
+item = []  # make a list and add input
 while True:
     try:
         item.append(input().upper())
     except EOFError:
         break
 
+item.sort()  # sort the list alphabetically
 
-result = {}
+result = {}  # make a map and add the input and then count
 for f in range(len(item)):
     if item[f] not in result:
         result.update({item[f]: 1})
@@ -25,6 +26,6 @@ for f in range(len(item)):
         result.update({item[f]: num})
 
 
-
+# print the number of items and the name of the items
 for k, v in result.items():
     print(v, " ", k)
