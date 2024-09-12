@@ -26,7 +26,7 @@ months = {
 }
 
 # input 8/6/1999 or August 6, 1999
-# output 1999-8-6
+# output 1999-08-06
 dateList = []
 new = ""
 
@@ -34,7 +34,9 @@ while True:
     date = input("Date: ")
     if "/" in date:
         dateList = date.split("/")
-        if 0 < int(dateList[0]) <= 12 and 0 < int(dateList[1]) <= 31 and len(dateList[2]) == 4:
+        if len(dateList) != 3:
+            continue
+        elif 0 < int(dateList[0]) <= 12 and 0 < int(dateList[1]) <= 31 and len(dateList[2]) == 4:
             print(dateList[2] + "-" + dateList[0].zfill(2) + "-" + dateList[1].zfill(2))
             break
         else:
@@ -42,7 +44,9 @@ while True:
     elif "," in date:
         new = date.replace(",", "")
         dateList = new.split()
-        if 0 < int(dateList[1]) <= 31 and len(dateList[2]) == 4 and dateList[0] in months:
+        if len(dateList) != 3:
+            continue
+        elif 0 < int(dateList[1]) <= 31 and len(dateList[2]) == 4 and dateList[0] in months:
             print(dateList[2] + "-" + str(months[dateList[0]]).zfill(2) + "-" + dateList[1].zfill(2))
             break
         else:
