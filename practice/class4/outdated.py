@@ -9,6 +9,7 @@ If the user’s input is not a valid date in either format, prompt the user agai
 Assume that every month has no more than 31 days;
 no need to validate whether a month has 28, 29, 30, or 31 days."""
 
+
 months = {
     "January": 1,
     "February": 2,
@@ -24,24 +25,30 @@ months = {
     "December": 12
 }
 
-days = {
-    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
-}
-
 # input 8/6/1999 or August 6, 1999
 # output 1999-8-6
-
-date = []
+dateList = []
+new = ""
 
 while True:
-    try:
-        date = input("Date: ").split("/" and "," and " ")
-        if date[1] in months and date[2] in days and len(date[3]) == 4:
+    date = input("Date: ")
+    if "/" in date:
+        dateList = date.split("/")
+        if 0 < int(dateList[0]) <= 12 and 0 < int(dateList[1]) <= 31 and len(dateList[2]) == 4:
+            print(dateList[2] + "-" + dateList[0].zfill(2) + "-" + dateList[1].zfill(2))
             break
-    except KeyError:
+        else:
+            continue
+    elif "," in date:
+        new = date.replace(",", "")
+        dateList = new.split()
+        if 0 < int(dateList[1]) <= 31 and len(dateList[2]) == 4 and dateList[0] in months:
+            print(dateList[2] + "-" + str(months[dateList[0]]).zfill(2) + "-" + dateList[1].zfill(2))
+            break
+        else:
+            continue
+    else:
         continue
-
-print(date[3], "-", date[1], "-", date[2])
 
 
 
